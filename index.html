@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internal Medicine Quiz</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Internal Medicine Quiz</h1>
+  </header>
+
+  <main>
+    <!-- Setup Screen -->
+    <section id="screen-setup">
+      <h2>Configure Your Session</h2>
+      <div id="error-banner" class="error-banner hidden"></div>
+
+      <div class="form-group">
+        <label>Topics</label>
+        <div id="topic-list" class="topic-list"></div>
+        <button id="select-all-topics" type="button">Select All</button>
+      </div>
+
+      <div class="form-group">
+        <label for="format-select">Question Format</label>
+        <select id="format-select">
+          <option value="mixed">Mixed</option>
+          <option value="multiple_choice">Multiple Choice Only</option>
+          <option value="free_response">Free Response Only</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="count-select">Session Length</label>
+        <select id="count-select">
+          <option value="10">10 questions</option>
+          <option value="20">20 questions</option>
+          <option value="40">40 questions</option>
+          <option value="all">All available</option>
+        </select>
+      </div>
+
+      <div id="count-notice" class="notice hidden"></div>
+      <button id="start-btn" type="button" class="btn-primary">Start Session</button>
+    </section>
+
+    <!-- Quiz Screen -->
+    <section id="screen-quiz" class="hidden">
+      <div class="progress-bar">
+        <span id="progress-text"></span>
+      </div>
+      <div id="question-container"></div>
+      <button id="next-btn" type="button" class="btn-primary hidden">Next</button>
+    </section>
+
+    <!-- Results Screen -->
+    <section id="screen-results" class="hidden">
+      <h2>Session Complete</h2>
+      <div id="score-summary"></div>
+      <div id="topic-breakdown"></div>
+      <button id="restart-btn" type="button" class="btn-primary">Start New Session</button>
+    </section>
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
