@@ -3,6 +3,7 @@ import { createSession, getCurrentQuestion, getProgress, recordAnswer, isSession
 
 let allQuestions = []
 let session = null
+let sessionNotice = null
 
 function showScreen(id) {
   document.querySelectorAll('main > section').forEach(s => s.classList.add('hidden'))
@@ -35,7 +36,7 @@ async function init() {
 function renderSetup() {
   showScreen('screen-setup')
   hideError()
-  document.getElementById('count-notice').classList.add('hidden')
+  sessionNotice = null
 
   const topics = extractTopics(allQuestions)
   const topicList = document.getElementById('topic-list')
@@ -74,12 +75,10 @@ function startSession() {
     return
   }
 
-  const notice = document.getElementById('count-notice')
   if (count !== Infinity && filtered.length < count) {
-    notice.textContent = `Only ${filtered.length} questions match your filters — using all of them.`
-    notice.classList.remove('hidden')
+    sessionNotice = `Only ${filtered.length} questions match your filters — using all of them.`
   } else {
-    notice.classList.add('hidden')
+    sessionNotice = null
   }
 
   session = createSession(sampled)
@@ -90,7 +89,11 @@ function renderQuestion() {
   showScreen('screen-quiz')
   const q = getCurrentQuestion(session)
   const { current, total } = getProgress(session)
-  document.getElementById('progress-text').textContent = `Question ${current} of ${total}`
+  const progressEl = document.getElementById('progress-text')
+  progressEl.textContent = `Question ${current} of ${total}`
+  if (sessionNotice && current === 1) {
+    progressEl.textContent += ` — ${sessionNotice}`
+  }
   document.getElementById('next-btn').classList.add('hidden')
 
   const container = document.getElementById('question-container')
