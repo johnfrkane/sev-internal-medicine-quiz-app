@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { loadQuestions, extractTopics, filterQuestions, sampleQuestions } from '../js/questions.js'
+import { loadQuestions, extractTopics, filterQuestions, sampleQuestions, escapeHtml } from '../js/questions.js'
 
 const validMC = {
   id: '001', topic: 'cardiology', difficulty: 'medium', type: 'multiple_choice',
@@ -26,6 +26,11 @@ describe('loadQuestions', () => {
 
   it('throws when questions array is missing', () => {
     expect(() => loadQuestions({})).toThrow()
+  })
+
+  it('rejects MC question where correct does not match any option', () => {
+    const badMC = { ...validMC, correct: 'X' }
+    expect(loadQuestions({ questions: [badMC] })).toHaveLength(0)
   })
 })
 
@@ -91,5 +96,17 @@ describe('sampleQuestions', () => {
   it('returns empty array when count is 0 or negative', () => {
     expect(sampleQuestions([validMC, validFR], 0)).toHaveLength(0)
     expect(sampleQuestions([validMC, validFR], -5)).toHaveLength(0)
+  })
+})
+
+describe('escapeHtml', () => {
+  it('escapes HTML special characters', () => {
+    expect(escapeHtml('<script>')).toBe('&lt;script&gt;')
+    expect(escapeHtml('A & B')).toBe('A &amp; B')
+    expect(escapeHtml('"quoted"')).toBe('&quot;quoted&quot;')
+  })
+
+  it('passes through safe strings unchanged', () => {
+    expect(escapeHtml('normal text')).toBe('normal text')
   })
 })

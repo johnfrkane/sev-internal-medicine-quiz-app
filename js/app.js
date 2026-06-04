@@ -1,4 +1,4 @@
-import { loadQuestions, extractTopics, filterQuestions, sampleQuestions } from './questions.js'
+import { loadQuestions, extractTopics, filterQuestions, sampleQuestions, escapeHtml } from './questions.js'
 import { createSession, getCurrentQuestion, getProgress, recordAnswer, isSessionComplete, getResults } from './quiz.js'
 
 let allQuestions = []
@@ -42,8 +42,8 @@ function renderSetup() {
   const topicList = document.getElementById('topic-list')
   topicList.innerHTML = topics.map(topic => `
     <label>
-      <input type="checkbox" value="${topic}" checked />
-      ${topic.replace(/_/g, ' ')}
+      <input type="checkbox" value="${escapeHtml(topic)}" checked />
+      ${escapeHtml(topic.replace(/_/g, ' '))}
     </label>
   `).join('')
 
@@ -108,17 +108,17 @@ function showExplanation(container, explanation) {
   if (container.querySelector('.explanation-box')) return
   const box = document.createElement('div')
   box.className = 'explanation-box'
-  box.innerHTML = `<strong>Explanation: </strong>${explanation}`
+  box.innerHTML = `<strong>Explanation: </strong>${escapeHtml(explanation)}`
   container.appendChild(box)
   document.getElementById('next-btn').classList.remove('hidden')
 }
 
 function renderMCQuestion(container, q) {
   container.innerHTML = `
-    <p class="question-text">${q.question}</p>
+    <p class="question-text">${escapeHtml(q.question)}</p>
     <ul class="options-list">
       ${q.options.map((opt, i) => `
-        <li><button class="option-btn" data-index="${i}">${opt}</button></li>
+        <li><button class="option-btn" data-index="${i}">${escapeHtml(opt)}</button></li>
       `).join('')}
     </ul>
   `
@@ -130,11 +130,11 @@ function renderMCQuestion(container, q) {
 function handleMCAnswer(container, q, selectedBtn) {
   container.querySelectorAll('.option-btn').forEach(btn => { btn.disabled = true })
 
-  const selectedLetter = q.options[parseInt(selectedBtn.dataset.index)].charAt(0)
+  const selectedLetter = q.options[parseInt(selectedBtn.dataset.index, 10)].charAt(0)
   const isCorrect = selectedLetter === q.correct
 
   container.querySelectorAll('.option-btn').forEach(btn => {
-    const letter = q.options[parseInt(btn.dataset.index)].charAt(0)
+    const letter = q.options[parseInt(btn.dataset.index, 10)].charAt(0)
     if (letter === q.correct) btn.classList.add('correct')
     else if (btn === selectedBtn) btn.classList.add('incorrect')
   })
@@ -146,7 +146,7 @@ function handleMCAnswer(container, q, selectedBtn) {
 
 function renderFRQuestion(container, q) {
   container.innerHTML = `
-    <p class="question-text">${q.question}</p>
+    <p class="question-text">${escapeHtml(q.question)}</p>
     <div class="fr-answer-area">
       <textarea placeholder="Type your answer here..."></textarea>
     </div>
@@ -160,7 +160,7 @@ function handleReveal(container, q) {
 
   const revealed = document.createElement('div')
   revealed.className = 'revealed-answer'
-  revealed.innerHTML = `<strong>Answer</strong>${q.answer}`
+  revealed.innerHTML = `<strong>Answer</strong>${escapeHtml(q.answer)}`
   container.querySelector('.fr-answer-area').after(revealed)
 
   const selfMark = document.createElement('div')
@@ -194,7 +194,7 @@ function renderResults() {
   const rows = Object.entries(results.byTopic)
     .map(([topic, { correct, total }]) => `
       <div class="topic-row">
-        <span class="topic-name">${topic.replace(/_/g, ' ')}</span>
+        <span class="topic-name">${escapeHtml(topic.replace(/_/g, ' '))}</span>
         <span class="topic-score">${correct}/${total}</span>
       </div>
     `).join('')
