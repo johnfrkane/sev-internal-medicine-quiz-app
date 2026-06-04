@@ -1,0 +1,13 @@
+{
+  "name": "med-quiz",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "serve": "npx serve ."
+  },
+  "devDependencies": {
+    "vitest": "^1.6.0"
+  }
+}
