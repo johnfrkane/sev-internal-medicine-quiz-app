@@ -1,0 +1,159 @@
+{
+  "questions": [
+    {
+      "id": "001",
+      "topic": "cardiology",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "A 58-year-old man with hypertension presents with crushing chest pain radiating to his left arm for 45 minutes. ECG shows ST elevation in leads II, III, and aVF. Which coronary artery is most likely occluded?",
+      "options": ["A. Left anterior descending artery", "B. Right coronary artery", "C. Left circumflex artery", "D. Left main coronary artery"],
+      "correct": "B",
+      "explanation": "ST elevation in the inferior leads (II, III, aVF) indicates an inferior STEMI, most commonly caused by occlusion of the right coronary artery (RCA), which supplies the inferior wall of the left ventricle in most patients."
+    },
+    {
+      "id": "002",
+      "topic": "cardiology",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "A patient with heart failure has a BNP of 850 pg/mL. Which statement best describes the role of BNP?",
+      "options": ["A. It is released by the kidneys in response to decreased perfusion", "B. It is released by ventricular myocytes in response to increased wall stress", "C. It is a marker of myocardial necrosis", "D. It indicates right heart failure specifically"],
+      "correct": "B",
+      "explanation": "BNP (B-type natriuretic peptide) is released by ventricular myocytes in response to increased wall stress from volume or pressure overload. It causes natriuresis, diuresis, and vasodilation as a compensatory mechanism."
+    },
+    {
+      "id": "003",
+      "topic": "pulmonology",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "A 45-year-old woman presents with progressive dyspnea, dry cough, and bilateral crackles. CT shows bilateral lower lobe ground-glass opacities with honeycombing. PFTs show a restrictive pattern with reduced DLCO. What is the most likely diagnosis?",
+      "options": ["A. COPD", "B. Idiopathic pulmonary fibrosis", "C. Sarcoidosis", "D. Community-acquired pneumonia"],
+      "correct": "B",
+      "explanation": "The combination of progressive dyspnea, bibasilar crackles, lower lobe honeycombing on CT, restrictive PFTs, and reduced DLCO is classic for idiopathic pulmonary fibrosis (IPF). Honeycombing in a basal-predominant, subpleural distribution is a hallmark finding."
+    },
+    {
+      "id": "004",
+      "topic": "pulmonology",
+      "difficulty": "hard",
+      "type": "free_response",
+      "question": "Describe the pathophysiology of type II respiratory failure and give two clinical examples.",
+      "answer": "Type II respiratory failure is characterized by hypercapnia (PaCO2 > 45 mmHg) caused by alveolar hypoventilation — the lungs cannot remove CO2 fast enough. This results from reduced respiratory drive, respiratory muscle weakness, or increased dead space. Clinical examples: (1) COPD exacerbation with air trapping and respiratory muscle fatigue; (2) Opioid overdose causing central respiratory depression and reduced respiratory rate.",
+      "explanation": "Type II (hypercapnic) failure contrasts with Type I (hypoxemic) failure. The problem is inadequate ventilation, not impaired gas exchange. CO2 retention causes respiratory acidosis."
+    },
+    {
+      "id": "005",
+      "topic": "gastroenterology",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "A 52-year-old man presents with jaundice, dark urine, and pale stools. Labs show elevated direct bilirubin and alkaline phosphatase. Ultrasound shows dilated intrahepatic bile ducts. What is the most likely mechanism?",
+      "options": ["A. Hepatocellular damage", "B. Obstructive (cholestatic) jaundice", "C. Hemolytic jaundice", "D. Gilbert syndrome"],
+      "correct": "B",
+      "explanation": "Obstructive jaundice presents with elevated direct (conjugated) bilirubin, elevated ALP, dark urine (bilirubinuria), and pale stools (absent urobilinogen). Dilated bile ducts on ultrasound confirm biliary obstruction. Common causes include choledocholithiasis and pancreatic head carcinoma."
+    },
+    {
+      "id": "006",
+      "topic": "gastroenterology",
+      "difficulty": "medium",
+      "type": "free_response",
+      "question": "A patient is diagnosed with hepatic encephalopathy. What are the two main pharmacologic treatments and their mechanisms of action?",
+      "answer": "1. Lactulose: an osmotic laxative that acidifies the colon, converting NH3 (absorbable) to NH4+ (non-absorbable), reducing ammonia absorption and increasing fecal excretion. 2. Rifaximin: a non-absorbable antibiotic that reduces gut bacterial load responsible for ammonia production. Both target ammonia, the primary neurotoxin driving hepatic encephalopathy.",
+      "explanation": "Hepatic encephalopathy is driven by accumulation of neurotoxins (primarily ammonia) due to impaired hepatic detoxification. Reducing gut ammonia production and absorption is the cornerstone of treatment."
+    },
+    {
+      "id": "007",
+      "topic": "nephrology",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "A 35-year-old woman presents with hematuria, proteinuria, and hypertension 2 weeks after a strep throat infection. Urinalysis shows red cell casts. What is the most likely diagnosis?",
+      "options": ["A. IgA nephropathy", "B. Post-streptococcal glomerulonephritis", "C. Lupus nephritis", "D. Minimal change disease"],
+      "correct": "B",
+      "explanation": "Post-streptococcal GN typically presents 1-3 weeks after strep pharyngitis with hematuria, proteinuria, hypertension, and red cell casts indicating glomerular injury. IgA nephropathy occurs concurrently with (not weeks after) an infection."
+    },
+    {
+      "id": "008",
+      "topic": "nephrology",
+      "difficulty": "hard",
+      "type": "free_response",
+      "question": "What are the MUDPILES causes of high anion gap metabolic acidosis?",
+      "answer": "MUDPILES: Methanol, Uremia, Diabetic ketoacidosis (DKA), Propylene glycol/Paraldehyde, Isoniazid/Iron, Lactic acidosis, Ethylene glycol, Salicylates. These conditions cause accumulation of unmeasured anions (ketones, lactate, organic acids), widening the anion gap (Na − Cl − HCO3 > 12 mEq/L).",
+      "explanation": "The anion gap represents unmeasured anions. Normal AG is 8-12 mEq/L. In high-AG metabolic acidosis, the drop in bicarbonate is replaced by an unmeasured anion rather than chloride (as in normal-AG metabolic acidosis)."
+    },
+    {
+      "id": "009",
+      "topic": "endocrinology",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "A 28-year-old woman presents with weight loss, heat intolerance, palpitations, diffuse goiter, and exophthalmos. TSH is undetectable; free T4 is elevated. What is the most likely diagnosis?",
+      "options": ["A. Hashimoto thyroiditis", "B. Toxic multinodular goiter", "C. Graves disease", "D. Thyroid adenoma"],
+      "correct": "C",
+      "explanation": "Graves disease is the most common cause of hyperthyroidism in young women. Diffuse goiter, exophthalmos, and hyperthyroidism together are pathognomonic. It is caused by thyroid-stimulating immunoglobulins (TSI) that activate TSH receptors."
+    },
+    {
+      "id": "010",
+      "topic": "endocrinology",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "A 55-year-old man with Type 2 diabetes has an HbA1c of 8.2% despite metformin. He has established cardiovascular disease. Which second-line agent is most appropriate?",
+      "options": ["A. Sulfonylurea", "B. GLP-1 receptor agonist (e.g., semaglutide)", "C. DPP-4 inhibitor", "D. Thiazolidinedione"],
+      "correct": "B",
+      "explanation": "ADA guidelines recommend GLP-1 receptor agonists (e.g., semaglutide, liraglutide) or SGLT-2 inhibitors as preferred second-line agents in T2DM patients with established ASCVD, heart failure, or CKD due to proven cardiovascular and renal benefits."
+    },
+    {
+      "id": "011",
+      "topic": "perioperative",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "A 70-year-old man with an MI 3 months ago requires elective hip replacement. What is the most appropriate next step?",
+      "options": ["A. Proceed with surgery with cardiac monitoring", "B. Delay surgery for at least 3-6 months post-MI", "C. Obtain cardiology clearance and proceed immediately", "D. Cancel surgery permanently"],
+      "correct": "B",
+      "explanation": "Current guidelines recommend delaying elective non-cardiac surgery at least 60 days (preferably 3-6 months) after MI to reduce perioperative MACE risk. Within 30 days post-MI the risk is unacceptably high."
+    },
+    {
+      "id": "012",
+      "topic": "perioperative",
+      "difficulty": "hard",
+      "type": "free_response",
+      "question": "List four of the six factors in the Revised Cardiac Risk Index (RCRI) and explain why it is used preoperatively.",
+      "answer": "The RCRI includes: (1) High-risk surgery (intraperitoneal, intrathoracic, suprainguinal vascular), (2) Ischemic heart disease (MI, positive stress test, angina), (3) Congestive heart failure, (4) Cerebrovascular disease (stroke or TIA), (5) Diabetes requiring insulin, (6) Preoperative creatinine > 2.0 mg/dL. Each factor scores 1 point. Score >= 3 indicates high risk of perioperative MACE, guiding decisions about further testing, optimization, or timing of surgery.",
+      "explanation": "The RCRI is the most widely validated preoperative cardiac risk tool. It identifies patients who may benefit from cardiology evaluation or optimization before elective surgery."
+    },
+    {
+      "id": "013",
+      "topic": "infectious_disease",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "A 25-year-old woman at 14 weeks gestation presents with dysuria, frequency, and fever. UA shows pyuria and bacteriuria. Which antibiotic is most appropriate?",
+      "options": ["A. Ciprofloxacin", "B. Trimethoprim-sulfamethoxazole", "C. Nitrofurantoin", "D. Cephalexin"],
+      "correct": "D",
+      "explanation": "Cephalexin (a first-generation cephalosporin) is safe throughout pregnancy and is a first-line choice for UTI in pregnant patients. Fluoroquinolones are avoided due to cartilage toxicity. TMP-SMX is avoided in the first and third trimesters. Nitrofurantoin is avoided near term due to risk of neonatal hemolytic anemia."
+    },
+    {
+      "id": "014",
+      "topic": "infectious_disease",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "A 65-year-old immunocompromised patient develops productive cough, fever, and new infiltrates on CXR 5 days after admission. Which organism most likely causes this hospital-acquired pneumonia?",
+      "options": ["A. Streptococcus pneumoniae", "B. Pseudomonas aeruginosa", "C. Mycoplasma pneumoniae", "D. Legionella pneumophila"],
+      "correct": "B",
+      "explanation": "Hospital-acquired pneumonia (HAP) occurring > 48h after admission, especially in immunocompromised patients, is commonly caused by gram-negative organisms including Pseudomonas aeruginosa, Klebsiella, and Acinetobacter. Empiric antipseudomonal coverage is recommended."
+    },
+    {
+      "id": "015",
+      "topic": "hematology",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "A 30-year-old woman has Hgb 8.5 g/dL, MCV 72 fL, low serum ferritin, and elevated TIBC. What is the most likely diagnosis?",
+      "options": ["A. Anemia of chronic disease", "B. Iron deficiency anemia", "C. Thalassemia trait", "D. Vitamin B12 deficiency"],
+      "correct": "B",
+      "explanation": "Iron deficiency anemia is characterized by low Hgb, low MCV (microcytic), low ferritin (depleted stores), and elevated TIBC (transferrin unsaturated due to low iron). Anemia of chronic disease typically shows normal or elevated ferritin with low/normal TIBC."
+    },
+    {
+      "id": "016",
+      "topic": "hematology",
+      "difficulty": "hard",
+      "type": "free_response",
+      "question": "A patient on warfarin for atrial fibrillation has an INR of 9.2 with active bleeding from a surgical wound. Outline your management.",
+      "answer": "For life-threatening bleeding with supratherapeutic INR: (1) Hold warfarin immediately. (2) Give 4-factor prothrombin complex concentrate (4F-PCC) for rapid reversal — faster and more complete than FFP. (3) Administer IV vitamin K 5-10 mg to sustain reversal (PCC effect wanes in hours). (4) FFP is an alternative if PCC unavailable but requires large volumes. (5) Recheck INR 15-30 minutes after PCC. (6) Address the bleeding source directly. Do NOT rely on vitamin K alone — it takes 12-24 hours.",
+      "explanation": "Warfarin reversal urgency determines strategy: asymptomatic supratherapeutic INR: hold +/- oral vitamin K; minor bleeding: oral vitamin K; major/life-threatening: 4F-PCC + IV vitamin K immediately."
+    }
+  ]
+}
