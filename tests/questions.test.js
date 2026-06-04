@@ -87,4 +87,9 @@ describe('sampleQuestions', () => {
   it('returns empty array for empty input', () => {
     expect(sampleQuestions([], 5)).toHaveLength(0)
   })
+
+  it('returns empty array when count is 0 or negative', () => {
+    expect(sampleQuestions([validMC, validFR], 0)).toHaveLength(0)
+    expect(sampleQuestions([validMC, validFR], -5)).toHaveLength(0)
+  })
 })
