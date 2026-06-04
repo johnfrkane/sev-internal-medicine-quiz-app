@@ -29,6 +29,7 @@ export function extractTopics(questions) {
 }
 
 export function filterQuestions(questions, { topics, format }) {
+  if (!Array.isArray(topics)) return []
   return questions.filter(q => {
     const topicMatch = topics.includes(q.topic)
     const formatMatch = format === 'mixed' || q.type === format
@@ -37,6 +38,7 @@ export function filterQuestions(questions, { topics, format }) {
 }
 
 export function sampleQuestions(questions, count) {
+  if (count <= 0) return []
   if (questions.length <= count) return [...questions]
   return [...questions].sort(() => Math.random() - 0.5).slice(0, count)
 }

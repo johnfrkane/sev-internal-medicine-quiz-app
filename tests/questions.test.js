@@ -37,6 +37,11 @@ describe('extractTopics', () => {
   it('returns empty array for empty input', () => {
     expect(extractTopics([])).toEqual([])
   })
+
+  it('deduplicates topics when multiple questions share the same topic', () => {
+    const q2 = { ...validMC, id: '003' }
+    expect(extractTopics([validMC, q2])).toEqual(['cardiology'])
+  })
 })
 
 describe('filterQuestions', () => {
@@ -61,6 +66,11 @@ describe('filterQuestions', () => {
   it('returns all types when format is mixed', () => {
     const result = filterQuestions([validMC, validFR], { topics: ['cardiology', 'nephrology'], format: 'mixed' })
     expect(result).toHaveLength(2)
+  })
+
+  it('returns empty array when no topics match', () => {
+    const result = filterQuestions([validMC, validFR], { topics: ['pulmonology'], format: 'mixed' })
+    expect(result).toHaveLength(0)
   })
 })
 
