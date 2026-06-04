@@ -35,6 +35,7 @@ async function init() {
 function renderSetup() {
   showScreen('screen-setup')
   hideError()
+  document.getElementById('count-notice').classList.add('hidden')
 
   const topics = extractTopics(allQuestions)
   const topicList = document.getElementById('topic-list')
@@ -104,7 +105,7 @@ function showExplanation(container, explanation) {
   if (container.querySelector('.explanation-box')) return
   const box = document.createElement('div')
   box.className = 'explanation-box'
-  box.innerHTML = `<strong>Explanation</strong>${explanation}`
+  box.innerHTML = `<strong>Explanation: </strong>${explanation}`
   container.appendChild(box)
   document.getElementById('next-btn').classList.remove('hidden')
 }
