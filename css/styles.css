@@ -234,15 +234,9 @@ select {
   border-radius: var(--radius);
   padding: 1.5rem;
   background: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 200px;
+  min-height: 180px;
 }
-.fc-back {
-  display: none;
-  justify-content: flex-start;
-}
+.fc-back { display: none; }
 .fc-card.flipped .fc-front { display: none; }
 .fc-card.flipped .fc-back {
   display: flex;

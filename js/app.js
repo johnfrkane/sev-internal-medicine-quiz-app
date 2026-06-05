@@ -170,7 +170,14 @@ function handleFRMark(container, q, isCorrect, selfMark) {
   selfMark.querySelectorAll('button').forEach(b => { b.disabled = true })
   recordAnswer(session, isCorrect)
   session.currentIndex++
-  showExplanation(container, q.explanation)
+  const expText = (q.explanation || '').trim()
+  const ansText = (q.answer || '').trim()
+  const redundant = ansText.toLowerCase().startsWith(expText.substring(0, 60).toLowerCase())
+  if (expText && !redundant) {
+    showExplanation(container, q.explanation)
+  } else {
+    document.getElementById('next-btn').classList.remove('hidden')
+  }
 }
 
 function renderResults() {
@@ -232,10 +239,9 @@ function renderFlashcard() {
 
   const optionsEl = document.getElementById('fc-options')
   if (q.type === 'multiple_choice') {
-    optionsEl.innerHTML = q.options.map(opt => {
-      const isCorrect = opt.charAt(0) === q.correct
-      return `<div class="fc-option${isCorrect ? ' fc-correct' : ''}">${escapeHtml(opt)}</div>`
-    }).join('')
+    optionsEl.innerHTML = q.options.map(opt =>
+      `<div class="fc-option">${escapeHtml(opt)}</div>`
+    ).join('')
   } else {
     optionsEl.innerHTML = ''
   }
