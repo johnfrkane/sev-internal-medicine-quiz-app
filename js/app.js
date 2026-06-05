@@ -4,6 +4,8 @@ import { createSession, getCurrentQuestion, getProgress, recordAnswer, isSession
 let allQuestions = []
 let session = null
 let sessionNotice = null
+let flashcards = []
+let flashIndex = 0
 
 function showScreen(id) {
   document.querySelectorAll('main > section').forEach(s => s.classList.add('hidden'))
@@ -51,29 +53,18 @@ function renderSetup() {
     topicList.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = true })
   }
 
-  document.getElementById('start-btn').onclick = startSession
+  document.getElementById('start-quiz-btn').onclick = startSession
+  document.getElementById('start-flash-btn').onclick = startFlashcards
 }
 
 function startSession() {
   hideError()
+  const filtered = getFilteredQuestions()
+  if (!filtered) return
 
-  const selectedTopics = [...document.querySelectorAll('#topic-list input:checked')].map(cb => cb.value)
-  if (selectedTopics.length === 0) {
-    showError('Please select at least one topic.')
-    return
-  }
-
-  const format = document.getElementById('format-select').value
   const countValue = document.getElementById('count-select').value
   const count = countValue === 'all' ? Infinity : parseInt(countValue, 10)
-
-  const filtered = filterQuestions(allQuestions, { topics: selectedTopics, format })
   const sampled = sampleQuestions(filtered, count)
-
-  if (sampled.length === 0) {
-    showError('No questions match your filters. Try selecting more topics or a different format.')
-    return
-  }
 
   if (count !== Infinity && filtered.length < count) {
     sessionNotice = `Only ${filtered.length} questions match your filters — using all of them.`
@@ -201,6 +192,90 @@ function renderResults() {
 
   document.getElementById('topic-breakdown').innerHTML = `<h3>By Topic</h3>${rows}`
 }
+
+function getFilteredQuestions() {
+  const selectedTopics = [...document.querySelectorAll('#topic-list input:checked')].map(cb => cb.value)
+  if (selectedTopics.length === 0) {
+    showError('Please select at least one topic.')
+    return null
+  }
+  const format = document.getElementById('format-select').value
+  const filtered = filterQuestions(allQuestions, { topics: selectedTopics, format })
+  if (filtered.length === 0) {
+    showError('No questions match your filters. Try selecting more topics or a different format.')
+    return null
+  }
+  return filtered
+}
+
+function startFlashcards() {
+  hideError()
+  const filtered = getFilteredQuestions()
+  if (!filtered) return
+  const countValue = document.getElementById('count-select').value
+  const count = countValue === 'all' ? Infinity : parseInt(countValue, 10)
+  flashcards = sampleQuestions(filtered, count)
+  flashIndex = 0
+  renderFlashcard()
+}
+
+function renderFlashcard() {
+  showScreen('screen-flashcard')
+  const q = flashcards[flashIndex]
+  const card = document.getElementById('fc-card')
+  card.classList.remove('flipped')
+
+  document.getElementById('flash-progress').textContent =
+    `Card ${flashIndex + 1} of ${flashcards.length}`
+
+  document.getElementById('fc-question').innerHTML = escapeHtml(q.question)
+
+  const optionsEl = document.getElementById('fc-options')
+  if (q.type === 'multiple_choice') {
+    optionsEl.innerHTML = q.options.map(opt => {
+      const isCorrect = opt.charAt(0) === q.correct
+      return `<div class="fc-option${isCorrect ? ' fc-correct' : ''}">${escapeHtml(opt)}</div>`
+    }).join('')
+  } else {
+    optionsEl.innerHTML = ''
+  }
+
+  const answerEl = document.getElementById('fc-answer')
+  if (q.type === 'multiple_choice') {
+    const correctOpt = q.options.find(o => o.charAt(0) === q.correct)
+    answerEl.innerHTML = `<strong>Answer</strong>${escapeHtml(correctOpt)}`
+  } else {
+    answerEl.innerHTML = `<strong>Answer</strong>${escapeHtml(q.answer)}`
+  }
+
+  document.getElementById('fc-explanation').innerHTML =
+    `<strong>Explanation</strong>${escapeHtml(q.explanation)}`
+
+  document.getElementById('fc-prev-btn').disabled = flashIndex === 0
+  document.getElementById('fc-next-btn').disabled = flashIndex === flashcards.length - 1
+}
+
+document.getElementById('fc-card').addEventListener('click', () => {
+  document.getElementById('fc-card').classList.toggle('flipped')
+})
+
+document.getElementById('fc-prev-btn').addEventListener('click', () => {
+  if (flashIndex > 0) { flashIndex--; renderFlashcard() }
+})
+
+document.getElementById('fc-next-btn').addEventListener('click', () => {
+  if (flashIndex < flashcards.length - 1) { flashIndex++; renderFlashcard() }
+})
+
+document.getElementById('quiz-back-btn').addEventListener('click', () => {
+  session = null
+  renderSetup()
+})
+
+document.getElementById('flash-back-btn').addEventListener('click', () => {
+  flashcards = []
+  renderSetup()
+})
 
 document.getElementById('next-btn').addEventListener('click', () => {
   if (isSessionComplete(session)) {

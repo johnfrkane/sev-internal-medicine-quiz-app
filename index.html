@@ -42,16 +42,45 @@
         </select>
       </div>
 
-      <button id="start-btn" type="button" class="btn-primary">Start Session</button>
+      <div class="start-btns">
+        <button id="start-quiz-btn" type="button" class="btn-primary">Start Quiz</button>
+        <button id="start-flash-btn" type="button" class="btn-secondary">Study Flashcards</button>
+      </div>
     </section>
 
     <!-- Quiz Screen -->
     <section id="screen-quiz" class="hidden">
-      <div class="progress-bar">
-        <span id="progress-text"></span>
+      <div class="screen-top-bar">
+        <button id="quiz-back-btn" type="button" class="btn-back">← Setup</button>
+        <span id="progress-text" class="progress-bar"></span>
       </div>
       <div id="question-container"></div>
       <button id="next-btn" type="button" class="btn-primary hidden">Next</button>
+    </section>
+
+    <!-- Flashcard Screen -->
+    <section id="screen-flashcard" class="hidden">
+      <div class="screen-top-bar">
+        <button id="flash-back-btn" type="button" class="btn-back">← Setup</button>
+        <span id="flash-progress" class="progress-bar"></span>
+      </div>
+      <div class="fc-scene">
+        <div id="fc-card" class="fc-card" role="button" aria-label="Flip card">
+          <div class="fc-face fc-front">
+            <div class="fc-hint">tap to reveal answer</div>
+            <div id="fc-question"></div>
+            <div id="fc-options"></div>
+          </div>
+          <div class="fc-face fc-back">
+            <div id="fc-answer"></div>
+            <div id="fc-explanation"></div>
+          </div>
+        </div>
+      </div>
+      <div class="fc-nav">
+        <button id="fc-prev-btn" type="button" class="btn-nav">&#8592; Prev</button>
+        <button id="fc-next-btn" type="button" class="btn-nav">Next &#8594;</button>
+      </div>
     </section>
 
     <!-- Results Screen -->
