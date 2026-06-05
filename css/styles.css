@@ -29,7 +29,7 @@ header {
 header h1 { font-size: 1.25rem; font-weight: 600; }
 
 main {
-  max-width: 720px;
+  max-width: 900px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
@@ -232,14 +232,14 @@ select {
 .fc-face {
   border: 2px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.5rem;
+  padding: 2rem;
   background: white;
-  min-height: 180px;
+  min-height: 200px;
 }
 .fc-back { display: none; }
 .fc-card.flipped .fc-front { display: none; }
 .fc-card.flipped .fc-back {
-  display: flex;
+  display: block;
   animation: fc-flip-in 0.25s ease;
 }
 @keyframes fc-flip-in {
@@ -250,24 +250,24 @@ select {
   font-size: 0.8rem;
   color: var(--muted);
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 #fc-question {
-  font-size: 1.05rem;
-  line-height: 1.6;
+  font-size: 1.1rem;
+  line-height: 1.7;
   text-align: center;
 }
 #fc-options {
-  margin-top: 1rem;
+  margin-top: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.5rem;
 }
 .fc-option {
-  font-size: 0.9rem;
-  padding: 0.35rem 0.6rem;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.75rem;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   color: var(--muted);
@@ -279,35 +279,58 @@ select {
   font-weight: 500;
 }
 #fc-answer {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  padding-bottom: 1.75rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border);
 }
-#fc-answer strong { display: block; margin-bottom: 0.4rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+#fc-answer strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--primary);
+}
 #fc-explanation {
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: 0.95rem;
+  line-height: 1.7;
   color: var(--muted);
-  border-top: 1px solid var(--border);
-  padding-top: 0.75rem;
 }
-#fc-explanation strong { display: block; margin-bottom: 0.3rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+#fc-explanation strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+}
 .fc-nav {
   display: flex;
   gap: 0.75rem;
+  margin-top: 1rem;
 }
 .btn-nav {
   flex: 1;
-  padding: 0.65rem;
+  padding: 0.75rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: white;
-  font-size: 0.95rem;
+  font-size: 1rem;
   cursor: pointer;
   color: var(--text);
 }
 .btn-nav:hover { border-color: var(--primary); color: var(--primary); }
 .btn-nav:disabled { opacity: 0.4; cursor: default; }
+
+@media (max-width: 600px) {
+  .fc-face { padding: 1.25rem; }
+  #fc-question { font-size: 1rem; }
+  #fc-answer { font-size: 0.95rem; padding-bottom: 1.25rem; margin-bottom: 1.25rem; }
+  #fc-explanation { font-size: 0.9rem; }
+  .btn-nav { padding: 0.65rem; font-size: 0.95rem; }
+}
 
 @media (max-width: 480px) {
   section { padding: 1.25rem; }
