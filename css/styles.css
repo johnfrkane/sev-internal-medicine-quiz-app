@@ -223,24 +223,13 @@ select {
 
 /* Flashcard */
 .fc-scene {
-  perspective: 1200px;
   margin-bottom: 1.5rem;
 }
 .fc-card {
-  position: relative;
-  width: 100%;
-  min-height: 260px;
-  transform-style: preserve-3d;
-  transition: transform 0.45s ease;
   cursor: pointer;
   border-radius: var(--radius);
 }
-.fc-card.flipped { transform: rotateY(180deg); }
 .fc-face {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
   border: 2px solid var(--border);
   border-radius: var(--radius);
   padding: 1.5rem;
@@ -248,8 +237,21 @@ select {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-height: 200px;
 }
-.fc-back { transform: rotateY(180deg); justify-content: flex-start; }
+.fc-back {
+  display: none;
+  justify-content: flex-start;
+}
+.fc-card.flipped .fc-front { display: none; }
+.fc-card.flipped .fc-back {
+  display: flex;
+  animation: fc-flip-in 0.25s ease;
+}
+@keyframes fc-flip-in {
+  from { opacity: 0; transform: rotateY(-90deg); }
+  to   { opacity: 1; transform: rotateY(0deg); }
+}
 .fc-hint {
   font-size: 0.8rem;
   color: var(--muted);
